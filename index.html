@@ -1,0 +1,26 @@
+<html>
+<head>
+        <meta charset="UTF-8">
+        <title>BladeIron Browser Test</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet"> 
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js" 
+                integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC"
+                crossorigin="anonymous"></script>
+        <!--
+        <script src="node_modules/web3/dist/web3.min.js"></script>
+        <script src="node_modules/rpc-websockets/dist/index.browser-bundle.js"></script>
+        -->
+        <script src="dist/bundle.js"></script>
+</head>
+<body>
+    <div id="ethStats"> Awaiting Stats ...</div>
+    <div id="accounts">
+        <h2 id="accTitle"></h2>
+        <button id="accRefresh" style="display: inline-block; margin: 5px;">Refresh</button>
+        <select id="accountList"></select>
+        <p id="balance"></p>
+    </div>
+</body>
+</html>

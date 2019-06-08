@@ -1,0 +1,22 @@
+{
+  "name": "basics",
+  "version": "1.0.0",
+  "description": "Testing BladeIron in browser via local RPC-WS connections and Infura",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node_modules/.bin/browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --port 7878 --directory",
+    "build": "webpack --entry ./src/* --output ./dist/bundle.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bladeiron_api": "git+https://github.com/elevenbuckets/bladeiron_api.git",
+    "browser-sync": "^2.24.6",
+    "ethereumjs-utils": "^5.2.5",
+    "merkle_tree": "git+https://github.com/elevenbuckets/merkle_tree.git",
+    "web3-eth-abi": "^1.0.0-beta.50"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
