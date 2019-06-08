@@ -1,8 +1,15 @@
 'use strict';
-const siapi = require('./speariron.js');
+
+const utils = require('web3-utils');
+const abi = require('web3-eth-abi');
+const ethUtils = require('ethereumjs-utils');
+const MerkleTree = require('merkle_tree');
+
+var ws;
+var account;
 
 const connectRPC = (url) => {
-        ws = new RPC(url);
+        ws = new RPCWebSocket.Client(url)
         
         const __ready = (resolve, reject) =>
         {
@@ -16,9 +23,11 @@ const connectRPC = (url) => {
 connectRPC('ws://localhost:3000')
 .then((rc) => {
     if (!rc) throw("failed connection");
+	console.log(`connected`);
 
     ws.subscribe('ethstats');
     ws.on('ethstats', (stats) => {
+	console.dir(stats);
         if (stats.blockHeight === 0) return;
         document.getElementById('ethStats').innerHTML = 
         `<h2>Ethereum Network Status</h2>
@@ -32,7 +41,7 @@ connectRPC('ws://localhost:3000')
         }
     })
 
-    getEthBalance = (addr) => {
+    const getEthBalance = (addr) => {
         document.getElementById('balance').innerHTML = "";
         ws.call('addrEtherBalance', [addr])
               .then((ethb) => {
@@ -41,7 +50,8 @@ connectRPC('ws://localhost:3000')
               })
     }
 
-    allAccounts = () => {
+    const allAccounts = () => {
+	console.log(`call accounts`);
         ws.call('accounts')
           .then((list) => {
               document.getElementById('accTitle').innerHTML = `Account Info` 
